@@ -43,5 +43,12 @@ namespace Carnivora
         {
             return "Возраст " + Age + "\n" + "Имя " + Name + "\n" + "Масса " + Mass + "\n" + "Длина тела " + Length + "\n" + "Скорость " + Speed + "\n";
         }
+
+        public string ToString(bool inLine)
+        {
+            if (inLine)
+                return "Возраст " + Age + " \t" + "Имя " + Name + " \t" + "Масса " + Mass + " \t" + "Длина тела " + Length + " \t" + "Скорость " + Speed + " \t";
+            else return ToString();
+        }
     }
 }

@@ -9,6 +9,7 @@ namespace Carnivora
     {
         static void Main(string[] args)
         {
+            //демонстрация работы объектов классов
             BigCats tiger = new BigCats("Тигра");
             Canidae dog = new Canidae("Doge");
             Canidae dog1 = new Canidae("Белый Бим");
@@ -35,7 +36,35 @@ namespace Carnivora
             bear.Move(30);
             Console.WriteLine(seal1.Name);
             seal1.Crawl(1.4);
+            Console.WriteLine("Нажмите любую клавишу для продолжения");
+            Console.ReadKey();
 
+            //демонстрация работы коллекций
+            var catsAndDogs = new List<AbstractCarnivora>();
+            catsAndDogs.Add(tiger);
+            catsAndDogs.Add(dog);
+            catsAndDogs.Add(dog1);
+            catsAndDogs.Add(seal);
+            catsAndDogs.Add(seal1);
+            catsAndDogs.Add(myCat);
+            catsAndDogs.Add(myCat1);
+            catsAndDogs.Add(bear);
+            catsAndDogs.Add(viver);
+            Console.WriteLine("Сортировка животных по имени");
+            catsAndDogs.Sort(delegate (AbstractCarnivora predator1, AbstractCarnivora predator2)
+            { return predator1.Name.CompareTo(predator2.Name); });
+            foreach(AbstractCarnivora predator in catsAndDogs)
+            {
+                Console.WriteLine(predator.ToString(true));
+            }
+            Console.WriteLine("Сортировка животных по массе");
+            catsAndDogs.Sort(delegate (AbstractCarnivora predator1, AbstractCarnivora predator2)
+            { return predator1.Mass.CompareTo(predator2.Mass); });
+            foreach (AbstractCarnivora predator in catsAndDogs)
+            {
+                Console.WriteLine(predator.ToString(true));
+            }
+            Console.WriteLine("Нажмите любую клавишу для выхода");
             Console.ReadKey();
         }
     }
