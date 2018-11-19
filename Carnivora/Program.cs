@@ -10,13 +10,13 @@ namespace Carnivora
         static void Main(string[] args)
         {
             //демонстрация работы объектов классов
-            BigCats tiger = new BigCats("Тигра");
+            Felidae tiger = new Felidae("Тигра",Felidae.Cat.Big);
             Canidae dog = new Canidae("Doge");
             Canidae dog1 = new Canidae("Белый Бим");
             AbstractCaniformia seal = new Phocidae("Лень");
             Phocidae seal1 = new Phocidae("Тюлень любви");
-            Felidae myCat = new SmallCats("Ксюха");
-            AbstractFeliformia myCat1 = new SmallCats("Макс");
+            Felidae myCat = new Felidae("Ксюха",Felidae.Cat.Small);
+            AbstractFeliformia myCat1 = new Felidae("Макс", Felidae.Cat.Small);
             Ursidae bear = new Ursidae("Винни-Пух");
             AbstractCarnivora viver = new Viverridae("Кофеман");
             Console.WriteLine(tiger.Name);
@@ -36,6 +36,7 @@ namespace Carnivora
             bear.Move(30);
             Console.WriteLine(seal1.Name);
             seal1.Crawl(1.4);
+            Console.WriteLine(myCat1);
             Console.WriteLine("Нажмите любую клавишу для продолжения");
             Console.ReadKey();
 

@@ -43,13 +43,11 @@
     <Compile Include="AbstractCaniformia.cs" />
     <Compile Include="AbstractCarnivora.cs" />
     <Compile Include="AbstractFeliformia.cs" />
-    <Compile Include="BigCats.cs" />
     <Compile Include="Canidae.cs" />
     <Compile Include="Felidae.cs" />
     <Compile Include="Phocidae.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SmallCats.cs" />
     <Compile Include="Ursidae.cs" />
     <Compile Include="Viverridae.cs" />
   </ItemGroup>
