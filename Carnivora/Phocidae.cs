@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,6 +8,7 @@ namespace Carnivora
 {
     class Phocidae:AbstractCaniformia
     {
+        Logger logger = LogManager.GetCurrentClassLogger();
         private double crawlSpeed;
 
         public double CrawlSpeed { get => crawlSpeed; set => crawlSpeed = value; }
@@ -16,11 +18,10 @@ namespace Carnivora
 
         }
 
-        public Phocidae(string name)
+        public Phocidae(string name) : base(name)
         {
             Random rand = new Random();
             Age = (uint)rand.Next(30);
-            Name = name;
             Mass = (uint)rand.Next(90, 3500);
             Length = (uint)rand.Next(125, 650);
             Speed = rand.Next(25);

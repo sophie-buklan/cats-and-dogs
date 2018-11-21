@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using NLog;
 
 namespace Carnivora
 {
@@ -9,16 +10,59 @@ namespace Carnivora
     {
         static void Main(string[] args)
         {
+            Logger logger = LogManager.GetCurrentClassLogger();
             //демонстрация работы объектов классов
-            Felidae tiger = new Felidae("Тигра",Felidae.Cat.Big);
-            Canidae dog = new Canidae("Doge");
-            Canidae dog1 = new Canidae("Белый Бим");
-            AbstractCaniformia seal = new Phocidae("Лень");
-            Phocidae seal1 = new Phocidae("Тюлень любви");
-            Felidae myCat = new Felidae("Ксюха",Felidae.Cat.Small);
-            AbstractFeliformia myCat1 = new Felidae("Макс", Felidae.Cat.Small);
-            Ursidae bear = new Ursidae("Винни-Пух");
-            AbstractCarnivora viver = new Viverridae("Кофеман");
+            Felidae tiger = null;
+            Canidae dog = null;
+            Canidae dog1 = null;
+            AbstractCaniformia seal = null;
+            Phocidae seal1 = null;
+            Felidae myCat = null;
+            AbstractFeliformia myCat1 = null;
+            Ursidae bear = null;
+            AbstractCarnivora viver = null;
+            dog1 = new Canidae("Белый Бим");
+            seal = new Phocidae("Лень");
+            seal1 = new Phocidae("Тюлень любви");
+            bear = new Ursidae("Винни-Пух");
+            viver = new Viverridae("Кофеман");
+            try
+            {
+                tiger = new Felidae("Тигра", Felidae.Cat.Big);
+            }
+            catch (ArgumentException ex)
+            {
+                logger.Warn($"{ex.Message}" + " Объект создан с параметром по умолчанию");
+                tiger = new Felidae("Тигра", Felidae.Cat.Big);
+            }
+            try
+            {
+                myCat = new Felidae("Ксюха", Felidae.Cat.Small);
+            }
+            catch (ArgumentException ex)
+            {
+                logger.Warn($"{ex.Message}" + " Объект создан с параметром по умолчанию");
+                myCat = new Felidae("Ксюха", Felidae.Cat.Small);
+            }
+            try
+            {
+                myCat1 = new Felidae("Макс", Felidae.Cat.Medium);
+            }
+            catch (ArgumentException ex)
+            {
+                logger.Warn($"{ex.Message}"+" Объект создан с параметром по умолчанию");
+                myCat1 = new Felidae("Макс", Felidae.Cat.Big);
+            }
+            try
+            {
+                Console.WriteLine("Введите имя собаки");
+                dog = new Canidae(Console.ReadLine());
+            }
+            catch (ArgumentException ex)
+            {
+                logger.Warn($"{ex.Message}" + " Объект создан с параметром по умолчанию");
+                dog = new Canidae("Собака");
+            }
             Console.WriteLine(tiger.Name);
             tiger.Sleep(3);
             tiger.Move(5);
