@@ -32,9 +32,6 @@ namespace Carnivora
 
         public AbstractCarnivora(string name)
         {
-            //var props = typeof(AbstractCarnivora).GetProperties();//.GetCustomAttributes(false);
-           // NameAttribute nameAttr = props[0] as NameAttribute;
-           // name = nameAttr.DefaultName;
             logger.Debug("имя " + name);
             if (name != "")
                 Name = name;
